@@ -1,16 +1,23 @@
 import React from 'react'
+import {ethers} from 'ethers'
+import { useInfo } from '../hooks/useInfo'
+import { useLsdBalance } from '../hooks/useLsdBalance'
+import { showBalance, showRate } from '../utils/common'
 
 const DappSectionInfo = () => {
+  const { apr, minimum } = useInfo()
+  const { rate } = useLsdBalance()
+  
   return (
     <div className="dapp-section__info">
       <p className="dapp-section__min">
         Min deposit ETH
-        <span>5.000264</span>
+        <span>{showBalance(minimum)}</span>
       </p>
       <div className="dapp-section__info-list">
         <ul className="dapp-section__info-item">
           <li className="dapp-section__info-item-name">Exchange rate</li>
-          <li className="dapp-section__info-numbers">1 ETH = 0.99252 LS-ETH</li>
+          <li className="dapp-section__info-numbers">1 ETH = {showRate(rate)} LS-ETH</li>
           <li className="dapp-section__info-tip">
             <button className="dapp-section__info-button">Info</button>
           </li>
@@ -18,7 +25,7 @@ const DappSectionInfo = () => {
         <ul className="dapp-section__info-item">
           <li className="dapp-section__info-item-name">Average Return</li>
           <li className="dapp-section__info-numbers">
-            <span className="green">≈ 5.42%</span> APR
+            <span className="green">≈ {showRate(apr)}%</span> APR
           </li>
           <li className="dapp-section__info-tip">
             <button className="dapp-section__info-button">Info</button>

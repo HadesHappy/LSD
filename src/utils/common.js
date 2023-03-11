@@ -49,9 +49,25 @@ const showRate = (rate) => {
   else
     return 1
 }
+
+const showEth = (balance) => {
+  if(balance){
+    const reDot = /[.]/
+    const balanceString = balance + ''
+    const dotLocation = balanceString.search(reDot)
+    if (dotLocation === -1)
+      return balance
+    else {
+      return balanceString.slice(0, dotLocation)
+    }
+  }
+  else
+  return 0
+}
 export {
   showAddress,
   showBalance,
   showPrice,
   showRate,
+  showEth,
 } 

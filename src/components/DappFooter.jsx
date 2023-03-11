@@ -1,8 +1,15 @@
 import React from 'react'
-import {Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { useLsdBalance } from '../hooks/useLsdBalance'
+import { useInfo } from '../hooks/useInfo'
+import { showEth, showRate } from '../utils/common'
+
 import "swiper/css";
 
 const DappFooter = () => {
+  const { stakedETH, lsEthSupply, veLsdSupply } = useLsdBalance()
+  const { multiplier } = useInfo()
+
   return (
     <footer className="dapp-footer">
       <Swiper
@@ -12,16 +19,16 @@ const DappFooter = () => {
         className="dapp-footer__info"
       >
         <SwiperSlide>
-          <span>414,750</span> ETH staking across
+          <span>{showEth(stakedETH)}</span> ETH staking
         </SwiperSlide>
         <SwiperSlide>
-        <span>2,146</span> node operations in
+          <span>{showEth(lsEthSupply)}</span> LS-ETH Token Supply
         </SwiperSlide>
         <SwiperSlide>
-        <span>114</span> regions with node
+          <span>{showEth(veLsdSupply)}</span> VE-LSD Token Supply
         </SwiperSlide>
         <SwiperSlide>
-        commission rate at <span>15.00%</span>
+          multiplier rate at <span>{showRate(multiplier)} %</span>
         </SwiperSlide>
       </Swiper>
 

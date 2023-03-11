@@ -3,32 +3,22 @@ import DappActions from '../../components/DappActions'
 import DappFooter from '../../components/DappFooter'
 import ModalWindow from '../../components/ModalWindow'
 import SelectToken from '../../components/SelectToken'
-import { getUpdateBalanceContract, getTokenLsETHContract } from '../../contracts'
-import { showBalance } from '../../utils/common'
+import { showEth } from '../../utils/common'
+import { useLsdBalance } from '../../hooks/useLsdBalance'
 
 import './dapp.css'
 
 export const Dapp = () => {
-  const [stakedETH, setStakedETH] = useState()
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const { stakedETH } = useLsdBalance()
 
-  const getStakedETHAmount = async() => {
-    const amount = await getUpdateBalanceContract()
-    setStakedETH(amount)
-
-    await getTokenLsETHContract()
-  }
-  useEffect(()=>{
-    getStakedETHAmount()
-  })
-  
   return (
     <>
       <main className='dapp'>
         <section className='dapp-section'>
           <h1 className="dapp-section__title">
             <span>Stake coins</span>
-            {showBalance(stakedETH)}
+            {showEth(stakedETH)}
           </h1>
           <p className="dapp-section__about">ETH staked</p>
         </section>

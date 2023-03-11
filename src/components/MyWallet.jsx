@@ -5,6 +5,7 @@ import { useBalance } from '@thirdweb-dev/react'
 import { NATIVE_TOKEN_ADDRESS } from '@thirdweb-dev/sdk'
 import { lsdTokenLsETH } from '../utils/constants'
 import { usePrice } from '../hooks/usePrice'
+import { useLsdBalance } from '../hooks/useLsdBalance'
 
 const EthBalance = () => {
   const { data, isLoading } = useBalance(NATIVE_TOKEN_ADDRESS)
@@ -22,13 +23,15 @@ const EthBalance = () => {
 
 const LsEthBalance = () => {
   const { data, isLoading } = useBalance(lsdTokenLsETH)
+  const { rate } = useLsdBalance()
+  const { ethPrice } = usePrice()
 
   return (
     <div className="connect-wallet__balance-item">
       <img src="img/coins/lseth.png" alt='lseth' />
       <b>{showBalance(Number(data?.displayValue)) || 0}</b>
       <p>LS-ETH balance</p>
-      <span>$500.18 ETH · $4,003,068.00 USD</span>
+      <span>{showBalance(Number(data?.displayValue) / rate)} ETH · ${showBalance((Number(data?.displayValue) / rate)* ethPrice)} USD</span>
     </div>
   )
 }

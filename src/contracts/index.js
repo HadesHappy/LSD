@@ -6,6 +6,7 @@ import veLSD from './abis/tokenVELSD.json'
 
 const getContracts = () => {
   const provider = new ethers.providers.Web3Provider(window.ethereum)
+
   const ownerContract = new ethers.Contract(owner.address, owner.abi, provider)
   const balanceContract = new ethers.Contract(updateBalance.address, updateBalance.abi, provider)
   const lsEthContract = new ethers.Contract(lsEth.address, lsEth.abi, provider)
