@@ -5,7 +5,6 @@ import ModalWindow from './components/ModalWindow';
 import PageHeader from './components/PageHeader';
 import { Dapp } from './pages/dapp/Dapp';
 import Home from './pages/home/Home';
-import { useAddress } from '@thirdweb-dev/react';
 
 function App() {
   const [isWalletWindowVisible, setIsWalletWindowVisible] = useState(false);

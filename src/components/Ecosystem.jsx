@@ -33,14 +33,14 @@ const Ecosystem = () => {
             <picture>
               <source srcSet="img/ecosystem-bg1@mobile.png" media="(max-width: 767px)" />
               <source srcSet="img/ecosystem-bg1@tablet.png" media="(min-width: 768px) and (max-width: 1199px)" />
-              <img src="img/ecosystem-bg1.png" />
+              <img src="img/ecosystem-bg1.png" alt='ecosystem-bg1'/>
             </picture>
           </li>
           <li className="ecosystem__view-item">
             <picture>
               <source srcSet="img/ecosystem-bg2@mobile.png" media="(max-width: 767px)" />
               <source srcSet="img/ecosystem-bg2@tablet.png" media="(min-width: 768px) and (max-width: 1199px)" />
-              <img src="img/ecosystem-bg2.png" />
+              <img src="img/ecosystem-bg2.png" alt='ecosystem-bg2'/>
             </picture>
             <b>How does $LSD <br /> staking work</b>
           </li>
@@ -48,7 +48,7 @@ const Ecosystem = () => {
             <picture>
               <source srcSet="img/ecosystem-bg3@mobile.png" media="(max-width: 767px)" />
               <source srcSet="img/ecosystem-bg3@tablet.png" media="(min-width: 768px) and (max-width: 1199px)" />
-              <img src="img/ecosystem-bg3.png" />
+              <img src="img/ecosystem-bg3.png" alt='ecosystem-bg3'/>
             </picture>
             <b>$LSD token <br /> Allocation</b>
           </li>
