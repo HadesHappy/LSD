@@ -1,10 +1,12 @@
 import React, { useRef } from 'react'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import { useAddress } from '@thirdweb-dev/react'
+import { showAddress } from '../utils/common'
 
-const PageHeader = ({setIsWalletWindowVisible, isAuth}) => {
+const PageHeader = ({ setIsWalletWindowVisible}) => {
 
-  const pageHeaderRef = useRef(null);
-
+  const pageHeaderRef = useRef(null)
+  const address = useAddress()
   return (
     <header className="page-header" ref={pageHeaderRef}>
       <Link to="/" className="page-header__logo">
@@ -32,15 +34,15 @@ const PageHeader = ({setIsWalletWindowVisible, isAuth}) => {
       <nav className="page-header__nav-right">
         <a href="">Buy LSD</a>
         {
-          isAuth ?
-          <button
-            className="address-button"
-            onClick={() => setIsWalletWindowVisible(true)}
-          >
-            062x ... 18tF
-          </button>
-          :
-          <button type='menu' className='page-header__nav-connect' onClick={() => setIsWalletWindowVisible(true)}>Connect</button>
+          address ?
+            <button
+              className="address-button"
+              onClick={() => setIsWalletWindowVisible(true)}
+            >
+              {showAddress(address)}
+            </button>
+            :
+            <button type='menu' className='page-header__nav-connect' onClick={() => setIsWalletWindowVisible(true)}>Connect</button>
         }
       </nav>
       <button
