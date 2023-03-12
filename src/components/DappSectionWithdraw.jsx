@@ -5,7 +5,7 @@ import { showBalance } from '../utils/common'
 
 const DappSectionWithdraw = ({setIsModalVisible}) => {
   const { data, isLoading } = useBalance(NATIVE_TOKEN_ADDRESS)
-  const [amount, setAmount] = useState()
+  const [amount, setAmount] = useState(0)
 
   const handleChange = (e) => {
     setAmount(e.target.value)
