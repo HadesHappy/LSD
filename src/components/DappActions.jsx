@@ -22,7 +22,7 @@ const DappActions = ({ setIsModalVisible, isModalVisible }) => {
           await deposit(inputValue)
         }
         else {
-          await stake(inputValue)
+          await stake(inputValue, address)
         }
       }
       else {

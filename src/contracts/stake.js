@@ -27,7 +27,6 @@ const withdraw = async (amount) => {
   try {
     const signer = getSigner()
     const contract = new ethers.Contract(lsEth.address, lsEth.abi, signer)
-    console.log('amount: ', ethers.utils.parseEther(amount.toString()))
 
     const tx = await contract.burn(ethers.utils.parseEther(amount.toString()))
     console.log('tx: ', tx)
@@ -38,12 +37,19 @@ const withdraw = async (amount) => {
   }
 }
 
-const stake = async (amount) => {
+const stake = async (amount, address) => {
   try {
     const signer = getSigner()
     const lsEthContract = new ethers.Contract(lsEth.address, lsEth.abi, signer)
-    const tx1 = await lsEthContract.approve(veLsd.address, ethers.utils.parseEther(amount.toString()))
-    await tx1.wait()
+
+    const allowance = await lsEthContract.allowance(address, veLsd.address)
+    console.log('allowance: ', ethers.utils.formatEther(allowance))
+
+    if (allowance < ethers.utils.parseEther(amount.toString())) {
+      const tx1 = await lsEthContract.approve(veLsd.address, ethers.utils.parseEther(amount.toString()))
+      await tx1.wait()
+    }
+
     const veLsdContract = new ethers.Contract(veLsd.address, veLsd.abi, signer)
     const tx2 = await veLsdContract.mint(ethers.utils.parseEther(amount.toString()))
     await tx2.wait()
