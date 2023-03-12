@@ -4,11 +4,11 @@ import { useLsdBalance } from './useLsdBalance'
 import { useStateInfo } from './useStateInfo'
 
 export const useExchangeRate = () => {
-  const { inputToken, outputToken, stakeType } = useStateInfo()
+  const { inputToken, outputToken, stakeType, inputValue, outputValue } = useStateInfo()
 
   const [exchangeRate, setExchangeRate] = useState(1)
   const { rate } = useLsdBalance()
-
+  
   useEffect(() => {
     if (stakeType === 'STAKE') {
       if (inputToken === 'ETH') {
@@ -23,7 +23,7 @@ export const useExchangeRate = () => {
       else
         setExchangeRate(1)
     }
-  }, [stakeType, inputToken])
+  }, [stakeType, inputToken, inputValue, outputValue])
 
   return exchangeRate
 }

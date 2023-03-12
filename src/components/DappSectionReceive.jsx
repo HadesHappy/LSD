@@ -6,21 +6,63 @@ import { usePrice } from '../hooks/usePrice'
 import { showBalance, showPrice } from '../utils/common'
 import { useExchangeRate } from '../hooks/useExchangeRate'
 import { useStateInfo } from '../hooks/useStateInfo'
+import { NATIVE_TOKEN_ADDRESS } from '@thirdweb-dev/sdk'
+import { lsdTokenLsETH, lsdTokenVeLSD } from '../utils/constants'
+import { useBalance } from '@thirdweb-dev/react'
+import { useLsdBalance } from '../hooks/useLsdBalance'
 
 import DappDisplayToken from './DappDisplayToken'
 
 const DappSectionReceive = ({ setIsModalVisible }) => {
   const dispatch = useDispatch()
-  
-  const { inputToken, outputToken, stakeType} = useStateInfo()
-  const exchangeRate = useExchangeRate()
+  const {ethPrice} = usePrice()
+  const { rate } = useLsdBalance()
 
-  const [amount, setAmount] = useState(0)
+  const { inputToken, outputToken, stakeType, inputValue, outputValue } = useStateInfo()
+  const exchangeRate = useExchangeRate()
+  const [tokenPrice, setTokenPrice] = useState(0)
+
+  const [amount, setAmount] = useState()
+
+  let tokenAddress
+  if (inputToken === 'ETH') {
+    tokenAddress = NATIVE_TOKEN_ADDRESS
+  } else if (inputToken === 'VE-LSD') {
+    tokenAddress = lsdTokenVeLSD
+  } else {
+    tokenAddress = lsdTokenLsETH
+  }
+
+  const { data, isLoading } = useBalance(tokenAddress)
 
   const handleChange = (e) => {
     setAmount(e.target.value)
     dispatch({ type: OUTPUT_CHANGE, payload: e.target.value })
+    if (inputToken === 'ETH') {
+      setTokenPrice(ethPrice)
+    } else {
+      setTokenPrice(ethPrice * rate)
+    }
   }
+
+  useEffect(() => {
+    setAmount(inputValue * exchangeRate)
+    if (inputToken === 'ETH') {
+      setTokenPrice(ethPrice)
+    } else {
+      setTokenPrice(ethPrice * rate)
+    }
+  }, [inputValue])
+
+  useEffect(() => {
+    setAmount(0)
+    dispatch({ type: INPUT_CHANGE, payload: 0 })
+    if (inputToken === 'ETH') {
+      setTokenPrice(ethPrice)
+    } else {
+      setTokenPrice(ethPrice * rate)
+    }
+  }, [inputToken])
 
   const handleClick = () => {
     setIsModalVisible(true)
@@ -39,8 +81,7 @@ const DappSectionReceive = ({ setIsModalVisible }) => {
     dispatch({ type: INPUTTOKEN, payload: outputToken })
     dispatch({ type: OUTPUTTOKEN, payload: token })
 
-    dispatch({ type: OUTPUT_CHANGE, payload: 0 })
-    dispatch({ type: INPUT_CHANGE, payload: 0 })
+    setAmount(0)
   }
 
   return (
@@ -53,12 +94,12 @@ const DappSectionReceive = ({ setIsModalVisible }) => {
       <header className="dapp-section__receive-header">
         <p className="dapp-section__receive-title">Receive {outputToken}</p>
         <p className="dapp-section__receive-balance">
-          Balance: <span>10,364.0 {outputToken}</span>
+          Balance: <span>{showBalance(data?.displayValue)} {outputToken}</span>
         </p>
         <button className="dapp-section__receive-lock">Lock</button>
       </header>
       <div className="dapp-section__receive-actions">
-        <input type="number" placeholder="0,000.000000" value={amount} onChange={handleChange} />
+        <input type="number" placeholder="0,000.000000" value={amount || 0} onChange={handleChange} />
         <div className="dapp-section__receive-currency">
           <button
             className="dapp-section__receive-currency-select currency-select"
@@ -68,7 +109,7 @@ const DappSectionReceive = ({ setIsModalVisible }) => {
           </button>
         </div>
       </div>
-      <p className="dapp-section__receive-count">$1,264,300.00</p>
+      <p className="dapp-section__receive-count">${amount * tokenPrice}</p>
       <DappSectionInfo />
     </div>
   )

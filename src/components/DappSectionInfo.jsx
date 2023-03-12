@@ -35,13 +35,13 @@ const DappSectionInfo = () => {
             <button className="dapp-section__info-button">Info</button>
           </li>
         </ul>
-        <ul className="dapp-section__info-item">
+        {/* <ul className="dapp-section__info-item">
           <li className="dapp-section__info-item-name">Transaction cost</li>
           <li className="dapp-section__info-numbers">0.01320 ETH (≈$64.50 USD) / 36 gwei</li>
           <li className="dapp-section__info-tip">
             <span className="dapp-section__info-cost">Low</span>
           </li>
-        </ul>
+        </ul> */}
       </div>
     </div>
   )
