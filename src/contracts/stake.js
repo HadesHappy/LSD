@@ -15,9 +15,7 @@ const deposit = async (amount) => {
     const contract = new ethers.Contract(depositPool.address, depositPool.abi, signer)
 
     const tx = await contract.deposit({ value: ethers.utils.parseEther(amount.toString()) })
-    console.log('tx: ', tx)
     const receipt = await tx.wait()
-    console.log('receipt: ', receipt)
   } catch (error) {
     console.log(error)
   }
@@ -27,11 +25,8 @@ const withdraw = async (amount) => {
   try {
     const signer = getSigner()
     const contract = new ethers.Contract(lsEth.address, lsEth.abi, signer)
-
     const tx = await contract.burn(ethers.utils.parseEther(amount.toString()))
-    console.log('tx: ', tx)
     const receipt = await tx.wait()
-    console.log('receipt: ', receipt)
   } catch (error) {
     console.log(error)
   }
@@ -43,7 +38,6 @@ const stake = async (amount, address) => {
     const lsEthContract = new ethers.Contract(lsEth.address, lsEth.abi, signer)
 
     const allowance = await lsEthContract.allowance(address, veLsd.address)
-    console.log('allowance: ', ethers.utils.formatEther(allowance))
 
     if (allowance < ethers.utils.parseEther(amount.toString())) {
       const tx1 = await lsEthContract.approve(veLsd.address, ethers.utils.parseEther(amount.toString()))

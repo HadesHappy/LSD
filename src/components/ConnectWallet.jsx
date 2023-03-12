@@ -37,10 +37,10 @@ const ConnectWallet = ({ setIsWalletWindowVisible }) => {
       response = await conneectWithWalletConnect()
     }
 
-    if(response && response?.data?.account){
+    if (response && response?.data?.account) {
       setIsWalletLoading(false)
-    }else{
-      if(response.error){
+    } else {
+      if (response.error) {
         setIsWalletLoading(false)
       }
     }
@@ -54,7 +54,7 @@ const ConnectWallet = ({ setIsWalletWindowVisible }) => {
           <button
             type="button"
             className="connect-wallet__back"
-            onClick = {disconnect}
+            onClick={disconnect}
           >
             Back
           </button>
@@ -72,8 +72,8 @@ const ConnectWallet = ({ setIsWalletWindowVisible }) => {
         {
           address &&
           <div className="connect-wallet__top-pair">
-            <img src="img/wallet-pair1.png" />
-            <img src="img/wallet-pair2.png" />
+            <img src="img/wallet-pair1.png" alt='pair1' />
+            <img src="img/wallet-pair2.png" alt='pair2' />
           </div>
         }
       </div>
@@ -102,7 +102,7 @@ const ConnectWallet = ({ setIsWalletWindowVisible }) => {
                       className="connect-wallet__button" key={wallet.name}
                       onClick={() => walletButtonHandle(wallet.name)}
                     >
-                      <img src={`img/wallets/${wallet.img}.png`} />
+                      <img src={`img/wallets/${wallet.img}.png`} alt='wallet_image' />
                       {wallet.name}
                     </button>
                   )
@@ -129,7 +129,7 @@ const ConnectWallet = ({ setIsWalletWindowVisible }) => {
             </div>
           </div>
           :
-          <MyWallet /> 
+          <MyWallet />
       }
     </aside>
   )

@@ -1,5 +1,5 @@
 {
-  "address": "0xf80CbA199D55fD14588068b8298856C30246038B",
+  "address": "0x208CA3C606Fe0d5FE7DDc071881441c4388B3DA4",
   "abi":[
     {
       "inputs": [
@@ -77,25 +77,6 @@
           "type": "uint256"
         }
       ],
-      "name": "getAmountIn",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "_ethAmount",
-          "type": "uint256"
-        }
-      ],
       "name": "getSharesOfStETH",
       "outputs": [
         {
@@ -142,13 +123,6 @@
         }
       ],
       "name": "withdrawEther",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "withdrawStETH",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

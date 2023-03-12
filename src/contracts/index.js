@@ -36,7 +36,7 @@ const getOwnerContract = async () => {
     // get multiplier
     const lsdMultiplier = await ownerContract.getMultiplier()
     const lsdMultiplierUnit = await ownerContract.getMultiplierUnit()
-    const multiplier = Number(lsdMultiplier) / (10 ** (Number(lsdMultiplierUnit) - 2))
+    const multiplier = Number(lsdMultiplier) / (10 ** (Number(lsdMultiplierUnit) - 2 + 18))
 
     // get deposit enabled
     const depositEnabled = await ownerContract.getDepositEnabled()
@@ -69,7 +69,6 @@ const getUpdateBalanceContract = async () => {
   } catch (error) {
     console.log(error)
   }
-
 }
 
 const getTokenLsETHContract = async () => {
