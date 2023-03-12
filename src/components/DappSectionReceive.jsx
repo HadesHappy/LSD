@@ -25,9 +25,9 @@ const DappSectionReceive = ({ setIsModalVisible }) => {
   const [amount, setAmount] = useState()
 
   let tokenAddress
-  if (inputToken === 'ETH') {
+  if (outputToken === 'ETH') {
     tokenAddress = NATIVE_TOKEN_ADDRESS
-  } else if (inputToken === 'VE-LSD') {
+  } else if (outputToken === 'VE-LSD') {
     tokenAddress = lsdTokenVeLSD
   } else {
     tokenAddress = lsdTokenLsETH
@@ -38,7 +38,7 @@ const DappSectionReceive = ({ setIsModalVisible }) => {
   const handleChange = (e) => {
     setAmount(e.target.value)
     dispatch({ type: OUTPUT_CHANGE, payload: e.target.value })
-    if (inputToken === 'ETH') {
+    if (outputToken === 'ETH') {
       setTokenPrice(ethPrice)
     } else {
       setTokenPrice(ethPrice * rate)
@@ -47,7 +47,7 @@ const DappSectionReceive = ({ setIsModalVisible }) => {
 
   useEffect(() => {
     setAmount(inputValue * exchangeRate)
-    if (inputToken === 'ETH') {
+    if (outputToken === 'ETH') {
       setTokenPrice(ethPrice)
     } else {
       setTokenPrice(ethPrice * rate)
@@ -57,7 +57,7 @@ const DappSectionReceive = ({ setIsModalVisible }) => {
   useEffect(() => {
     setAmount(0)
     dispatch({ type: INPUT_CHANGE, payload: 0 })
-    if (inputToken === 'ETH') {
+    if (outputToken === 'ETH') {
       setTokenPrice(ethPrice)
     } else {
       setTokenPrice(ethPrice * rate)
