@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react'
-import {ethers} from 'ethers'
+import React from 'react'
 import { useInfo } from '../hooks/useInfo'
 import { useExchangeRate } from '../hooks/useExchangeRate'
 import { showBalance, showRate } from '../utils/common'
@@ -11,7 +10,7 @@ const DappSectionInfo = () => {
   const outputToken = useSelector(state => state.inputReducer.outputToken)
 
   const { apr, minimum } = useInfo()
-  
+
   return (
     <div className="dapp-section__info">
       <p className="dapp-section__min">
