@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {ethers} from 'ethers'
 import { useInfo } from '../hooks/useInfo'
-import { useLsdBalance } from '../hooks/useLsdBalance'
+import { useExchangeRate } from '../hooks/useExchangeRate'
 import { showBalance, showRate } from '../utils/common'
+import { useSelector } from 'react-redux'
 
 const DappSectionInfo = () => {
+  const exchangeRate = useExchangeRate()
+  const inputToken = useSelector(state => state.inputReducer.inputToken)
+  const outputToken = useSelector(state => state.inputReducer.outputToken)
+
   const { apr, minimum } = useInfo()
-  const { rate } = useLsdBalance()
   
   return (
     <div className="dapp-section__info">
@@ -17,7 +21,7 @@ const DappSectionInfo = () => {
       <div className="dapp-section__info-list">
         <ul className="dapp-section__info-item">
           <li className="dapp-section__info-item-name">Exchange rate</li>
-          <li className="dapp-section__info-numbers">1 ETH = {showRate(rate)} LS-ETH</li>
+          <li className="dapp-section__info-numbers">1 {inputToken} = {showRate(exchangeRate)} {outputToken} </li>
           <li className="dapp-section__info-tip">
             <button className="dapp-section__info-button">Info</button>
           </li>

@@ -6,7 +6,7 @@ const showAddress = (address) => {
 }
 
 const showBalance = (value) => {
-  if (value) {
+  if (value > 0.00001) {
     const reDot = /[.]/
     const valueString = value + ''
     const dotLocation = valueString.search(reDot)
@@ -21,7 +21,7 @@ const showBalance = (value) => {
 }
 
 const showPrice = (price) => {
-  if (price) {
+  if (price > 0.0001) {
     const reDot = /[.]/
     const priceString = price + ''
     const dotLocation = priceString.search(reDot)
@@ -51,7 +51,7 @@ const showRate = (rate) => {
 }
 
 const showEth = (balance) => {
-  if(balance){
+  if (balance) {
     const reDot = /[.]/
     const balanceString = balance + ''
     const dotLocation = balanceString.search(reDot)
@@ -62,7 +62,7 @@ const showEth = (balance) => {
     }
   }
   else
-  return 0
+    return 0
 }
 export {
   showAddress,
