@@ -70,6 +70,18 @@ const DappSectionReceive = ({ setIsModalVisible }) => {
   }
 
   const handleSwitchClick = () => {
+
+    const dappTabs = document.querySelectorAll('.dapp-section__tab')
+    if (dappTabs[0].parentNode.classList.contains('dapp-section__tabs--unstake')){
+      dappTabs[0].parentNode.classList.remove('dapp-section__tabs--unstake')
+      dappTabs[0].classList.add('active')
+      dappTabs[1].classList.remove('active')
+    }else{
+      dappTabs[0].parentNode.classList.add('dapp-section__tabs--unstake')
+      dappTabs[1].classList.add('active')
+      dappTabs[0].classList.remove('active')
+    }
+
     if (stakeType === 'STAKE') {
       dispatch({ type: STAKE_TYPE, payload: 'UNSTAKE' })
     }
@@ -99,7 +111,7 @@ const DappSectionReceive = ({ setIsModalVisible }) => {
         <button className="dapp-section__receive-lock">Lock</button>
       </header>
       <div className="dapp-section__receive-actions">
-        <input type="number" placeholder="0,000.000000" value={amount || 0} onChange={handleChange} />
+        <input type="number" placeholder="0,000.000000" value={amount} onChange={handleChange} />
         <div className="dapp-section__receive-currency">
           <button
             className="dapp-section__receive-currency-select currency-select"

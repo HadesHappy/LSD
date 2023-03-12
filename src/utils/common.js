@@ -36,7 +36,7 @@ const showPrice = (price) => {
 }
 
 const showRate = (rate) => {
-  if (rate) {
+  if (rate > 0.00000001) {
     const reDot = /[.]/
     const rateString = rate + ''
     const dotLocation = rateString.search(reDot)
@@ -47,7 +47,7 @@ const showRate = (rate) => {
     }
   }
   else
-    return 1
+    return 0
 }
 
 const showEth = (balance) => {

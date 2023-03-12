@@ -665,7 +665,7 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: #151617;
   border-radius: 10px;
   border: 1px solid #242526;
-  cursor: default;
+  cursor: pointer;
 }
 
 .dapp-section__receive-header {

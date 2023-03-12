@@ -35,7 +35,7 @@ const LsEthBalance = () => {
     </div>
   )
 }
-const MyWallet = () => {
+const MyWallet = ({ setIsWalletWindowVisible }) => {
   const address = useAddress()
 
   const disconnect = useDisconnect()
@@ -91,7 +91,7 @@ const MyWallet = () => {
       </div>
       <footer className="connect-wallet__footer">
         <button type="button" className="connect-wallet__disconnect" onClick={disconnect}>Disconnect</button>
-        <button type="button" className="connect-wallet__buy-lsd">Buy LSD </button>
+        <button type="button" className="connect-wallet__buy-lsd" onClick={() => setIsWalletWindowVisible(false)}>Buy LSD </button>
       </footer>
     </div>
   )

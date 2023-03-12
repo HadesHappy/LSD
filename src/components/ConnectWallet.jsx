@@ -129,7 +129,7 @@ const ConnectWallet = ({ setIsWalletWindowVisible }) => {
             </div>
           </div>
           :
-          <MyWallet />
+          <MyWallet setIsWalletWindowVisible = { setIsWalletWindowVisible} />
       }
     </aside>
   )

@@ -13,15 +13,26 @@ const DappSectionHeader = () => {
   const dispatch = useDispatch()
 
   const stakeClick = () => {
+    const dappTabs = document.querySelectorAll('.dapp-section__tab')
+    dappTabs[0].parentNode.classList.remove('dapp-section__tabs--unstake')
+    dappTabs[0].classList.add('active')
+    dappTabs[1].classList.remove('active')
+
     dispatch({ type: STAKE_TYPE, payload: 'STAKE' })
     dispatch({ type: INPUTTOKEN, payload: 'ETH' })
     dispatch({ type: OUTPUTTOKEN, payload: 'LS-ETH' })
   }
 
   const unstakeClick = () => {
+    const dappTabs = document.querySelectorAll('.dapp-section__tab')
+    dappTabs[1].parentNode.classList.add('dapp-section__tabs--unstake')
+    dappTabs[1].classList.add('active')
+    dappTabs[0].classList.remove('active')
+
     dispatch({ type: STAKE_TYPE, payload: 'UNSTAKE' })
     dispatch({ type: INPUTTOKEN, payload: 'LS-ETH' })
     dispatch({ type: OUTPUTTOKEN, payload: 'ETH' })
+    
   }
 
   return (
@@ -31,7 +42,7 @@ const DappSectionHeader = () => {
         <li className="dapp-section__tab dapp-section__tab--unstake " onClick={unstakeClick}>Unstake</li>
       </ul>
       {
-        address === owner ?
+        address !== owner ?
           <div className="dapp-section__settings">
             <button
               className="dapp-section__settings-btn"

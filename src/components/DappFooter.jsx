@@ -8,7 +8,7 @@ import "swiper/css";
 
 const DappFooter = () => {
   const { stakedETH, lsEthSupply, veLsdSupply } = useLsdBalance()
-  const { multiplier } = useInfo()
+  const { multiplier, multiplierUnit } = useInfo()
 
   return (
     <footer className="dapp-footer">
@@ -28,7 +28,7 @@ const DappFooter = () => {
           <span>{showEth(veLsdSupply)}</span> VE-LSD Token Supply
         </SwiperSlide>
         <SwiperSlide>
-          multiplier rate at <span>{showRate(multiplier)} %</span>
+          multiplier rate at <span>{showRate(multiplier / (10 ** multiplierUnit))} %</span>
         </SwiperSlide>
       </Swiper>
 

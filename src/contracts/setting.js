@@ -68,7 +68,7 @@ const setMinimumDepositAmount = async (amount) => {
   }
 }
 
-const setDepositEnabled = async (enabled) => {
+const setLsdDepositEnabled = async (enabled) => {
   try {
     const contract = getContract()
     const tx = await contract.setDepositEnabled(enabled)
@@ -78,7 +78,7 @@ const setDepositEnabled = async (enabled) => {
   }
 }
 
-const setIsLock = async (lock) => {
+const setLsdIsLock = async (lock) => {
   try {
     const contract = getContract()
     const tx = await contract.setIsLock(lock)
@@ -88,7 +88,7 @@ const setIsLock = async (lock) => {
   }
 }
 
-const setMultiplier = async (amount) => {
+const setLsdMultiplier = async (amount) => {
   try {
     const contract = getContract()
     const tx = await contract.setMultiplier(amount)
@@ -98,7 +98,7 @@ const setMultiplier = async (amount) => {
   }
 }
 
-const setMultiplierUnit = async (amount) => {
+const setLsdMultiplierUnit = async (amount) => {
   try {
     const contract = getContract()
     const tx = await contract.setMultiplierUnit(amount)
@@ -115,8 +115,8 @@ export {
   setSwiseApy,
   setApyUnit,
   setMinimumDepositAmount,
-  setDepositEnabled,
-  setIsLock,
-  setMultiplier,
-  setMultiplierUnit,
+  setLsdDepositEnabled,
+  setLsdIsLock,
+  setLsdMultiplier,
+  setLsdMultiplierUnit,
 }
