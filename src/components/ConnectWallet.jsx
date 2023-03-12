@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import MyWallet from './MyWallet'
+import { toast } from 'react-hot-toast'
 import { useMetamask, useCoinbaseWallet, useWalletConnect, useAddress, useDisconnect } from '@thirdweb-dev/react'
+import { showAddress } from '../utils/common'
+
 const ConnectWallet = ({ setIsWalletWindowVisible }) => {
   const connectWithMetamask = useMetamask()
   const connectCoinbase = useCoinbaseWallet()
@@ -38,6 +41,7 @@ const ConnectWallet = ({ setIsWalletWindowVisible }) => {
     }
 
     if (response && response?.data?.account) {
+      toast.success(`wallet connected: ${showAddress(response.data.account)}`)
       setIsWalletLoading(false)
     } else {
       if (response.error) {

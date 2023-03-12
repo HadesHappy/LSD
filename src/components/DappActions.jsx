@@ -5,6 +5,7 @@ import DappSectionWithdraw from './DappSectionWithdraw'
 import { stake, unstake, deposit, withdraw } from '../contracts/stake'
 import { useSelector } from 'react-redux'
 import { useAddress } from '@thirdweb-dev/react'
+import { toast } from 'react-hot-toast'
 
 const DappActions = ({ setIsModalVisible, isModalVisible }) => {
   const stakeType = useSelector(state => state.inputReducer.stakeType)
@@ -14,27 +15,74 @@ const DappActions = ({ setIsModalVisible, isModalVisible }) => {
   const address = useAddress()
 
   const [text, setText] = useState('Stake now')
+  const [loading, setLoading] = useState(false)
 
   const handleClick = async () => {
+
     if (address) {
-      if (stakeType === 'STAKE') {
-        if (inputToken === 'ETH') {
-          await deposit(inputValue)
-        }
-        else {
-          await stake(inputValue, address)
-        }
+      if (inputValue === 0) {
+        toast.error(`Enter an amount to ${stakeType}`)
       }
       else {
-        if (inputToken === 'LS-ETH') {
-          await withdraw(inputValue)
+        if (stakeType === 'STAKE') {
+          if (inputToken === 'ETH') {
+            setLoading(true)
+            const response = await deposit(inputValue)
+            if (response.status === 'success') {
+              toast.success('Succeed.')
+            } else {
+              if (response.status === 'Error')
+                toast.error(`${response.status}: Insufficient ${inputToken} balance.`)
+              else
+                toast.error('Transaction failed by unknown reason.')
+            }
+            setLoading(false)
+          }
+          else {
+            setLoading(true)
+            const response = await stake(inputValue, address)
+            if (response.status === 'success') {
+              toast.success('Succeed.')
+            } else {
+              if (response.status === 'Error')
+                toast.error(`${response.status}: Insufficient ${inputToken} balance.`)
+              else
+                toast.error('Transaction failed by unknown reason.')
+            }
+            setLoading(false)
+          }
         }
         else {
-          await unstake(inputValue)
+          if (inputToken === 'LS-ETH') {
+            setLoading(true)
+            const response = await withdraw(inputValue)
+            if (response.status === 'success') {
+              toast.success('Succeed.')
+            } else {
+              if (response.status === 'Error')
+                toast.error(`${response.status}: Insufficient ${inputToken} balance.`)
+              else
+                toast.error('Transaction failed by unknown reason.')
+            }
+            setLoading(false)
+          }
+          else {
+            setLoading(true)
+            const response = await unstake(inputValue)
+            if (response.status === 'success') {
+              toast.success('Succeed.')
+            } else {
+              if (response.status === 'Error')
+                toast.error(`${response.status}: Insufficient ${inputToken} balance.`)
+              else
+                toast.error('Transaction failed by unknown reason.')
+            }
+            setLoading(false)
+          }
         }
       }
     } else {
-
+      toast.error('Wallet is not connected')
     }
   }
   useEffect(() => {

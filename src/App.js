@@ -5,6 +5,7 @@ import ModalWindow from './components/ModalWindow';
 import PageHeader from './components/PageHeader';
 import { Dapp } from './pages/dapp/Dapp';
 import Home from './pages/home/Home';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const [isWalletWindowVisible, setIsWalletWindowVisible] = useState(false);
@@ -25,6 +26,14 @@ function App() {
           <ConnectWallet setIsWalletWindowVisible={setIsWalletWindowVisible}/>
         </ModalWindow>
       }
+      <Toaster toastOptions={{
+        className: '',
+        style: {
+          borderRadius: '10px',
+          background: '#6761D7',
+          color: '#fff',
+        }
+      }} />
     </div>
   );
 }

@@ -16,8 +16,24 @@ const deposit = async (amount) => {
 
     const tx = await contract.deposit({ value: ethers.utils.parseEther(amount.toString()) })
     const receipt = await tx.wait()
+
+    if (receipt?.status === 1)
+      return {
+        status: 'Success',
+        error: ''
+      }
+    else
+      return {
+        status: 'Failed',
+        error: receipt
+      }
+
   } catch (error) {
     console.log(error)
+    return {
+      status: 'Error',
+      error: error
+    }
   }
 }
 
@@ -27,8 +43,23 @@ const withdraw = async (amount) => {
     const contract = new ethers.Contract(lsEth.address, lsEth.abi, signer)
     const tx = await contract.burn(ethers.utils.parseEther(amount.toString()))
     const receipt = await tx.wait()
+
+    if (receipt?.status === 1)
+      return {
+        status: 'Success',
+        error: ''
+      }
+    else
+      return {
+        status: 'Failed',
+        error: receipt
+      }
   } catch (error) {
     console.log(error)
+    return {
+      status: 'Error',
+      error: error
+    }
   }
 }
 
@@ -46,10 +77,25 @@ const stake = async (amount, address) => {
 
     const veLsdContract = new ethers.Contract(veLsd.address, veLsd.abi, signer)
     const tx2 = await veLsdContract.mint(ethers.utils.parseEther(amount.toString()))
-    await tx2.wait()
+    const receipt = await tx2.wait()
+
+    if (receipt?.status === 1)
+      return {
+        status: 'Success',
+        error: ''
+      }
+    else
+      return {
+        status: 'Failed',
+        error: receipt
+      }
   }
   catch (error) {
     console.log(error)
+    return {
+      status: 'Error',
+      error: error
+    }
   }
 }
 
@@ -58,9 +104,25 @@ const unstake = async (amount) => {
     const signer = getSigner()
     const veLsdContract = new ethers.Contract(veLsd.address, veLsd.abi, signer)
     const tx = await veLsdContract.burn(ethers.utils.parseEther(amount.toString()))
-    await tx.wait()
+    const receipt = await tx.wait()
+
+    if (receipt?.status === 1)
+      return {
+        status: 'Success',
+        error: ''
+      }
+    else
+      return {
+        status: 'Failed',
+        error: receipt
+      }
+
   } catch (error) {
     console.log(error)
+    return {
+      status: 'Error',
+      error: error
+    }
   }
 }
 

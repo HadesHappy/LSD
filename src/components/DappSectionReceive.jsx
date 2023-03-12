@@ -111,7 +111,7 @@ const DappSectionReceive = ({ setIsModalVisible }) => {
         <button className="dapp-section__receive-lock">Lock</button>
       </header>
       <div className="dapp-section__receive-actions">
-        <input type="number" placeholder="0,000.000000" value={amount} onChange={handleChange} />
+        <input type="number" placeholder="0,000.000000" value={amount || 0} onChange={handleChange} />
         <div className="dapp-section__receive-currency">
           <button
             className="dapp-section__receive-currency-select currency-select"

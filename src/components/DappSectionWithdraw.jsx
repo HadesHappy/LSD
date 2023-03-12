@@ -87,7 +87,7 @@ const DappSectionWithdraw = ({ setIsModalVisible }) => {
         <button className="dapp-section__withdraw-max" onClick={handleMaxClick}>Max</button>
       </header>
       <div className="dapp-section__withdraw-actions">
-        <input type="number" placeholder="0,000.000000" value={amount} onChange={handleChange} />
+        <input type="number" placeholder="0,000.000000" value={amount || 0} onChange={handleChange} />
         <div className="dapp-section__withdraw-currency">
           <button
             className="dapp-section__withdraw-currency-select currency-select"
