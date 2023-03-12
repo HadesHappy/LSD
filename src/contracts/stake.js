@@ -13,7 +13,7 @@ const deposit = async (amount) => {
   try {
     const signer = getSigner()
     const contract = new ethers.Contract(depositPool.address, depositPool.abi, signer)
-    
+
     const tx = await contract.deposit({ value: ethers.utils.parseEther(amount.toString()) })
     console.log('tx: ', tx)
     const receipt = await tx.wait()
@@ -27,6 +27,8 @@ const withdraw = async (amount) => {
   try {
     const signer = getSigner()
     const contract = new ethers.Contract(lsEth.address, lsEth.abi, signer)
+    console.log('amount: ', ethers.utils.parseEther(amount.toString()))
+
     const tx = await contract.burn(ethers.utils.parseEther(amount.toString()))
     console.log('tx: ', tx)
     const receipt = await tx.wait()

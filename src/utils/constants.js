@@ -16,9 +16,6 @@ const uniswapRouter = '0x7a250d5630b4cf539739df2c5dacb4c659f2488d'
 const rocketDepositPool = '0x2cac916b2a963bf162f076c0a8a4a8200bcfbfb4'
 const rocketTokenRETH = '0xae78736Cd615f374D3085123A210448E74Fc6393'
 
-const lidoAPY = 4.5
-const rpAPY = 4.28
-
 export {
   lsdTokenLsETH,
   lsdTokenVeLSD,
