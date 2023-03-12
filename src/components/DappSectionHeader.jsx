@@ -42,7 +42,7 @@ const DappSectionHeader = () => {
         <li className="dapp-section__tab dapp-section__tab--unstake " onClick={unstakeClick}>Unstake</li>
       </ul>
       {
-        address !== owner ?
+        address === owner ?
           <div className="dapp-section__settings">
             <button
               className="dapp-section__settings-btn"
