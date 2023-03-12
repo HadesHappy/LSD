@@ -26,7 +26,7 @@ const DappActions = ({ setIsModalVisible, isModalVisible }) => {
         }
       }
       else {
-        if (inputToken === 'LSETH') {
+        if (inputToken === 'LS-ETH') {
           await withdraw(inputValue)
         }
         else {
