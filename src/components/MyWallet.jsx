@@ -16,7 +16,7 @@ const EthBalance = () => {
       <img src="img/coins/eth.png" alt='eth' />
       <b>{showBalance(Number(data?.displayValue)) || 0}</b>
       <p>ETH balance</p>
-      <span>${showPrice(Number(data?.value) * ethPrice /(10**18))} USD</span>
+      <span>${showPrice(Number(data?.value) * ethPrice /(10**18)) || 0} USD</span>
     </div>
   )
 }
@@ -31,7 +31,7 @@ const LsEthBalance = () => {
       <img src="img/coins/lseth.png" alt='lseth' />
       <b>{showBalance(Number(data?.displayValue)) || 0}</b>
       <p>LS-ETH balance</p>
-      <span>{showBalance(Number(data?.displayValue) / rate)} ETH · ${showBalance((Number(data?.displayValue) / rate)* ethPrice)} USD</span>
+      <span>{showBalance(Number(data?.displayValue) / rate)} ETH · ${showBalance((Number(data?.displayValue) / rate)* ethPrice) || 0} USD</span>
     </div>
   )
 }
