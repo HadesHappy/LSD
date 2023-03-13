@@ -2,9 +2,10 @@ import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useAddress } from '@thirdweb-dev/react'
 import { showAddress } from '../utils/common'
+import { useNavigate } from 'react-router-dom'
 
-const PageHeader = ({ setIsWalletWindowVisible}) => {
-
+const PageHeader = ({ setIsWalletWindowVisible }) => {
+  const navigate = useNavigate()
   const pageHeaderRef = useRef(null)
   const address = useAddress()
   return (
@@ -32,7 +33,7 @@ const PageHeader = ({ setIsWalletWindowVisible}) => {
         </ul>
       </nav>
       <nav className="page-header__nav-right">
-        <a href="">Buy LSD</a>
+        <a href="" onClick={() => navigate('/dapp')} >Buy LSD</a>
         {
           address ?
             <button
@@ -52,7 +53,7 @@ const PageHeader = ({ setIsWalletWindowVisible}) => {
           pageHeaderRef.current.classList.toggle('opened');
         }}
       ></button>
-    </header>
+    </header >
   )
 }
 
