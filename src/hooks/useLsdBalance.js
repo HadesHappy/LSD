@@ -19,6 +19,7 @@ export const useLsdBalance = () => {
   const getLsETHSupply = async () => {
     try {
       const {exchangeRate, totalSupply} = await getTokenLsETHContract()
+
       setLsEthSupply(totalSupply)
       setRate(exchangeRate)
     } catch (error) {

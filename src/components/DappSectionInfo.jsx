@@ -16,7 +16,7 @@ const DappSectionInfo = () => {
     <div className="dapp-section__info">
       <p className="dapp-section__min">
         Min deposit ETH
-        <span>{showBalance(minimum)}</span>
+        <span>{showBalance(minimum)} ETH</span>
       </p>
       <div className="dapp-section__info-list">
         <ul className="dapp-section__info-item">

@@ -8,18 +8,18 @@ export const useExchangeRate = () => {
 
   const [exchangeRate, setExchangeRate] = useState(1)
   const { rate } = useLsdBalance()
-  
+
   useEffect(() => {
     if (stakeType === 'STAKE') {
       if (inputToken === 'ETH') {
-        setExchangeRate(rate)
+        setExchangeRate(1 / rate)
       }
       else {
         setExchangeRate(1)
       }
     } else {
       if (inputToken === 'LS-ETH')
-        setExchangeRate(1 / rate)
+        setExchangeRate(rate)
       else
         setExchangeRate(1)
     }
