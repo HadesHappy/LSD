@@ -364,6 +364,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   margin-top: 26px;
+  margin-bottom: 56px;
 }
 
 .hero__footer a {

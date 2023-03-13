@@ -47,7 +47,7 @@ const HeroCurrencies = () => {
     getPrices()
   }, []);
 
-  let coins = [`BTC  ${btcPrice}`, `ETH  ${ethPrice}`, `BNB  ${bnbPrice}`, `XRP  ${xrpPrice}`, `ADA  ${adaPrice}`, `Doge  ${dogePrice}`, `MATIC  ${maticPrice}`, `SOL ${solPrice}`, `Dot ${dotPrice}`, `LTC ${ltcPrice}`, `BTC  $${btcPrice}`, `ETH  ${ethPrice}`, `BNB  ${bnbPrice}`, `XRP  ${xrpPrice}`, `ADA  ${adaPrice}`, `Doge  ${dogePrice}`, `MATIC  ${maticPrice}`, `SOL ${solPrice}`, `Dot ${dotPrice}`, `LTC ${ltcPrice}`,]
+  let coins = [`BTC  $${btcPrice}`, `ETH  $${ethPrice}`, `BNB  $${bnbPrice}`, `XRP  $${xrpPrice}`, `ADA  $${adaPrice}`, `Doge  $${dogePrice}`, `MATIC  $${maticPrice}`, `SOL $${solPrice}`, `Dot $${dotPrice}`, `LTC $${ltcPrice}`, `BTC  $${btcPrice}`, `ETH  $${ethPrice}`, `BNB  $${bnbPrice}`, `XRP  $${xrpPrice}`, `ADA  $${adaPrice}`, `Doge  $${dogePrice}`, `MATIC  $${maticPrice}`, `SOL $${solPrice}`, `Dot $${dotPrice}`, `LTC $${ltcPrice}`,]
   // const cryptoPrices = useCryptoPrices(["btc", "eth", "bnb", "xrp", "ada", "doge", "matic", "sol", "dot", "ltc"]);
   return (
     <Swiper
