@@ -15,7 +15,7 @@ import DappDisplayToken from './DappDisplayToken'
 
 const DappSectionReceive = ({ setIsModalVisible }) => {
   const dispatch = useDispatch()
-  const {ethPrice} = usePrice()
+  const { ethPrice } = usePrice()
   const { rate } = useLsdBalance()
 
   const { inputToken, outputToken, stakeType, inputValue, outputValue } = useStateInfo()
@@ -72,11 +72,11 @@ const DappSectionReceive = ({ setIsModalVisible }) => {
   const handleSwitchClick = () => {
 
     const dappTabs = document.querySelectorAll('.dapp-section__tab')
-    if (dappTabs[0].parentNode.classList.contains('dapp-section__tabs--unstake')){
+    if (dappTabs[0].parentNode.classList.contains('dapp-section__tabs--unstake')) {
       dappTabs[0].parentNode.classList.remove('dapp-section__tabs--unstake')
       dappTabs[0].classList.add('active')
       dappTabs[1].classList.remove('active')
-    }else{
+    } else {
       dappTabs[0].parentNode.classList.add('dapp-section__tabs--unstake')
       dappTabs[1].classList.add('active')
       dappTabs[0].classList.remove('active')
@@ -121,7 +121,7 @@ const DappSectionReceive = ({ setIsModalVisible }) => {
           </button>
         </div>
       </div>
-      <p className="dapp-section__receive-count">${amount * tokenPrice}</p>
+      <p className="dapp-section__receive-count">${amount * tokenPrice || 0}</p>
       <DappSectionInfo />
     </div>
   )

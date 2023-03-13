@@ -97,7 +97,7 @@ const DappSectionWithdraw = ({ setIsModalVisible }) => {
           </button>
         </div>
       </div>
-      <p className="dapp-section__withdraw-count">${amount * tokenPrice}</p>
+      <p className="dapp-section__withdraw-count">${amount * tokenPrice || 0}</p>
     </div>
   )
 }
