@@ -1,6 +1,6 @@
 {
-  "address": "0x208CA3C606Fe0d5FE7DDc071881441c4388B3DA4",
-  "abi":[
+  "address": "0x438fB03F46D5F2c0F30953Ca10D2A6E2A4feA97d",
+  "abi": [
     {
       "inputs": [
         {
@@ -61,6 +61,26 @@
       ],
       "name": "EtherWithdrawn",
       "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "claimAll",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "claimToken",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
       "inputs": [],
