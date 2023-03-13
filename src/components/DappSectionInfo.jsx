@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux'
 import { lsdOwner } from '../utils/constants'
 
 const DappSectionInfo = () => {
-  const exchangeRate = useExchangeRate()
   const inputToken = useSelector(state => state.inputReducer.inputToken)
   const outputToken = useSelector(state => state.inputReducer.outputToken)
+  const exchangeRate = useExchangeRate()
 
   const { apr, aprUnit, minimum } = useInfo()
-  
+
   return (
     <div className="dapp-section__info">
       <p className="dapp-section__min">

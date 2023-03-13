@@ -42,5 +42,5 @@ export const useLsdBalance = () => {
     getVeLSDSupply()
   }, [])
 
-  return { stakedETH, lsEthSupply, veLsdSupply, rate }
+  return { stakedETH, lsEthSupply, veLsdSupply, rate, setRate }
 }
