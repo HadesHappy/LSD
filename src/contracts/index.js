@@ -49,7 +49,7 @@ const getOwnerContract = async () => {
 
     // get minimum deposit
     const minimumDepositAmount = await ownerContract.getMinimumDepositAmount()
-    const minimumAmount = Number(minimumDepositAmount)
+    const minimumAmount = Number(ethers.utils.formatEther(minimumDepositAmount))
 
     return { apr, rpApr, lidoApr, aprUnit, multiplier, multiplierUnit, depositEnabled, isLock, minimumAmount, owner }
   } catch (error) {
